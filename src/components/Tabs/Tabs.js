@@ -19,10 +19,11 @@ export default function Tabs(props) {
     const TabContent = () => data.map((section, sectionIndex) => {
         const { results } = section;
         const content = results.map((result, index) => {
-            return (<ul key={index} style={{display: sectionIndex === activeTab ? 'block' : 'none' }}>{index+1}. <a href={result.url}>{result.title}</a></ul>)
+            const listItem = <><a href={result.url}>{result.title}</a><p>{result.summary.replace('&#39;', "'")}</p></>;
+            return (<div key={index}><ol style={{ display: sectionIndex === activeTab ? 'block' : 'none' }}>{index + 1}. {listItem} </ol></div>)
         })
         return content;
     })
 
-    return (<><TabHeaders /><TabContent/></>)
+    return (<><TabHeaders /><TabContent /></>)
 };

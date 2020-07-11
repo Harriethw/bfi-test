@@ -37,5 +37,10 @@ describe('Tabs behaviour', () => {
         expect(screen.getByText(firstLink)).not.toBeVisible();
     })
 
+    it('shows summary text', () => {
+        renderPage();
+        expect(screen.getByText(/Psychology for all the family/)).toBeInTheDocument();
+    })
+
 })
 
