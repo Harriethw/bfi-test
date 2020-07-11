@@ -11,7 +11,7 @@ const useArticleData = (type) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios(apiLink);
+            const result = await axios.get(apiLink);
             setTabData(tabData => tabData.concat({ tabTitle: result.data.data[0].type.name, results: result.data.data }));
         }
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { useArticleData } from '../../hooks/useArticleData';
 
-export default function Tabs(props) {
-
-    const { data } = props;
+export default function Tabs() {
+    const data = useArticleData('review').concat(useArticleData('video'));
 
     const [activeTab, setActiveTab] = useState(0);
 
