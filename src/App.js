@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './logo.png';
 import Tabs from './components/Tabs/Tabs';
 
 function App() {
@@ -6,7 +7,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>BFI Articles API</h1>
+      <img src={logo} className="App-logo" alt="logo" />
+        <h1>BFI Popular Articles</h1>
       </header>
       <div><Tabs /></div>
     </div>

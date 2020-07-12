@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders header', () => {
   const { getByText } = render(<App />);
-  const heading = getByText(/BFI Articles API/i);
-  expect(heading).toBeInTheDocument();
+  const header = getByText(/BFI Popular Articles/i);
+  expect(header).toBeInTheDocument();
 });
