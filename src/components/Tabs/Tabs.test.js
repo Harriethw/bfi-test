@@ -55,5 +55,10 @@ describe('Tabs behaviour', () => {
         expect(screen.getByText(/Psychology for all the family/)).toBeInTheDocument();
     })
 
+    it('shows image for first link', async() => {
+        await renderPage();
+        expect(screen.getByAltText(/Film of the week: Inside Out/)).toBeInTheDocument();
+    })
+
 })
 

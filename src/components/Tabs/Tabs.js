@@ -45,9 +45,18 @@ export default function Tabs() {
         return content;
     })
 
+    const TabImage = () => {
+        if (data[activeTab] && data[activeTab].results[0] && data[activeTab].results[0].primary_image[3]) {
+            const thumbnailURL = data[activeTab].results[0].primary_image[3].url;
+            return (<img alt={data[activeTab].results[0].title} src={thumbnailURL} />)
+        } else return null
+    }
+
+
     return (<>
         <div className="tab-container">
             <div className="row--button"><TabHeaders /></div>
+            <div className="row--image"><TabImage /></div>
             <div className="row--content"><TabContent /></div>
         </div>
     </>)
