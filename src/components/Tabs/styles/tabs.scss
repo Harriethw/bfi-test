@@ -1,21 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Source+Serif+Pro:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Roboto+Slab:wght@500;700&display=swap");
 
 $grey: #ededed;
 $lightBlue: #1269b0;
 
 * {
-  font-family: "Source Sans Pro";
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .tab-container {
   display: flex;
   flex-direction: column;
   margin: 4em;
-  max-width: 500px;
+  max-width: 400px;
+  border: 1px $grey solid;
+  box-shadow: 1px 1px $grey;
 
   a {
     color: $lightBlue;
-    font-family: "Source Serif Pro";
+    font-family: "Roboto Slab", serif;
     font-weight: 900;
     text-decoration: none;
 
@@ -64,5 +66,19 @@ $lightBlue: #1269b0;
 
   a {
     padding-left: 1em;
+  }
+}
+
+.row--image {
+  display: none;
+}
+
+@media only screen and (min-width: 961px) {
+  .row--image {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 100%;
+    }
   }
 }
