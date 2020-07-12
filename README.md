@@ -1,3 +1,5 @@
+A prototype of a card-style component for previewing examples of video or review articles from the BFI Articles API.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
