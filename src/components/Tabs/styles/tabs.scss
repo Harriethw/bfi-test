@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Source+Serif+Pro:wght@400;600;700&display=swap");
+
+$grey: #ededed;
+$lightBlue: #1269b0;
+
+* {
+  font-family: "Source Sans Pro";
+}
+
+.tab-container {
+  display: flex;
+  flex-direction: column;
+  margin: 4em;
+  max-width: 500px;
+
+  a {
+    color: $lightBlue;
+    font-family: "Source Serif Pro";
+    font-weight: 900;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.row--button {
+  display: flex;
+  border-top: 2px black solid;
+  button {
+    flex-grow: 1;
+    display: flex;
+    font-family: "Source Serif Pro";
+    font-weight: 900;
+    font-size: large;
+    color: white;
+    background-color: black;
+    border: none;
+    transition: background 500ms ease-in-out, transform 200ms ease;
+
+    &:hover {
+      background-color: $grey;
+      color: black;
+    }
+    &.active {
+      background-color: $grey;
+      color: black;
+    }
+  }
+}
+
+.row--content {
+  ol {
+    font-weight: 400;
+    padding: 1em;
+    margin: 0;
+    border-bottom: 1px $grey solid;
+
+    &:hover {
+      background: $grey;
+    }
+  }
+
+  a {
+    padding-left: 1em;
+  }
+}
