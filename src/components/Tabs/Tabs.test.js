@@ -31,22 +31,23 @@ describe('Tabs behaviour', () => {
     it('renders only the first tab links at start', async() => {
         await renderPage();
         const firstLink = mockData.default[0].results[0].title;
-        const hiddenLink = mockData.default[1].results[0].title
         expect(screen.getByText(firstLink)).toBeInTheDocument();
-        expect(screen.getByText(hiddenLink)).not.toBeVisible();
     })
 
     it('renders correct links when tab clicked', async () => {
         await renderPage();
         const firstLink = mockData.default[0].results[0].title;
-        const hiddenLink = mockData.default[1].results[0].title;
+        const secondLink = mockData.default[1].results[0].title;
         expect(screen.getByTestId('tab-1')).toBeInTheDocument();
+        expect(screen.getByText(firstLink)).toBeVisible();
+        expect(screen.queryByText(secondLink)).not.toBeInTheDocument();
 
-        act(() => {
+        act( () => {
         userEvent.click(screen.getByTestId('tab-1'));
         });
-        expect(screen.getByText(hiddenLink)).toBeVisible();
-        expect(screen.getByText(firstLink)).not.toBeVisible();
+        await waitForElement(() => screen.getByText(secondLink));
+
+        expect(screen.getByText(secondLink)).toBeInTheDocument();
     })
 
     it('shows summary text', async () => {

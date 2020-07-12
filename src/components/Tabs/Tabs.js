@@ -3,18 +3,20 @@ import { useArticleData } from '../../hooks/useArticleData';
 import './styles/tabs.scss';
 
 export default function Tabs() {
-    //TODO: only call api with tab title when clicked?
-    const data = useArticleData('review').concat(useArticleData('video'));
-
+    const tabTitles = [
+        { title: 'Review', key: 'review' },
+        { title: 'Video', key: 'video' }
+    ];
     const [activeTab, setActiveTab] = useState(0);
+
+    const data = useArticleData(tabTitles[activeTab].key);
 
     const selectTab = (event, index) => {
         event.preventDefault();
         setActiveTab(index);
     }
 
-    const TabHeaders = () => data.map((section, index) => {
-        const { tabTitle } = section;
+    const TabHeaders = () => tabTitles.map((tabTitle, index) => {
         const activeClass = index === activeTab && 'active';
 
         return (<button
@@ -22,16 +24,17 @@ export default function Tabs() {
             onClick={(e) => selectTab(e, index)}
             key={index}
             data-testid={`tab-${index}`}>
-            {tabTitle}
+            {tabTitle.title}
         </button>)
     })
 
+    //TODO function to format summary text
     const TabContent = () => data.map((section, sectionIndex) => {
         const { results } = section;
         const content = results.map((result, index) => {
             const listItem = <>
                 <a href={result.url}>{result.title}</a>
-                <p>{result.summary.replace('&#39;', "'")}</p>
+                <p>{result.summary.replace(/&#39;/g, "'")}</p>
             </>;
             return (<div key={index}>
                 <ol style={{ display: sectionIndex === activeTab ? 'block' : 'none' }}>

@@ -12,11 +12,15 @@ const useArticleData = (type) => {
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios.get(apiLink);
-            setTabData(tabData => tabData.concat({ tabTitle: result.data.data[0].type.name, results: result.data.data }));
+            setTabData(tabData => tabData.concat({ tabTitle: type, results: result.data.data }));
         }
 
-        fetchData();
-    }, [apiLink]);
+        if (tabData.length === 0) {
+            fetchData();
+        } else if (!tabData.some(e => e.tabTitle === type)) {
+            fetchData();
+        }
+    }, [apiLink, tabData, type]);
 
     return tabData;
 }
